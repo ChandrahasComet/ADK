@@ -1,6 +1,13 @@
-import yfinance as yf
 import datetime
-from google.adk.agents import Agent
+import yfinance as yf
+
+def get_current_time(format: str)->dict:
+    """
+    Get the current time in the mentioned format.
+    """
+    return {
+        "current_time": datetime.datetime.now().strftime(format) if format else datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
 
 def get_stock_price(company_name: str) -> dict:
     """
@@ -33,19 +40,3 @@ def get_stock_price(company_name: str) -> dict:
             "time": now,
             "error": str(e)
         }
-    
-stock_analyst = Agent(
-    name = "stock_analyst",
-    model = "gemini-2.0-flash",
-    description = "Stock analyst agent that can provide the stock price for the given ticker symbol",
-    instruction = """
-    You are a helpful AI assistant that can provide the stock price for the given ticker symbol.
-
-    For the query you must first get the current time and then use the get_stock_price tool to get the stock price.
-
-    Output format must be
-    GOOG: $170.00 (2023-07-17 10:30:00)
-    APPLE: $270.00 (2023-07-17 10:30:00)
-""",
-    tools = [get_stock_price]
-)
