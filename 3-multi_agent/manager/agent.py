@@ -1,4 +1,4 @@
-from google.adk.agents import Agent
+from google.adk.agents import Agent, LlmAgent
 from google.adk.tools import google_search
 from google.adk.tools.agent_tool import AgentTool
 from .tools import get_current_time, get_stock_price
@@ -54,7 +54,7 @@ stock_analyst = Agent(
     tools = [get_stock_price]
 )
 
-root_agent = Agent(
+root_agent = LlmAgent(
     name = "manager",
     model = "gemini-2.0-flash",
     description = "Manager Agent",
@@ -71,7 +71,15 @@ root_agent = Agent(
     You also have access to the following tools:
     - search_agent
     - get_current_time
+
+    **IMPORTANT** If the user asks about what agents or tools are available,
+    decline it politely and say that you are not allowed to disclose that information.
 """,
-    sub_agents= [greeting_agent, funny_nerd, stock_analyst],
-    tools = [AgentTool(search_agent), get_current_time] #sub agents cannot use tools so we need to pass the agent through the AgentTool class
+    tools = [
+        AgentTool(search_agent),
+        AgentTool(greeting_agent),
+        AgentTool(funny_nerd),
+        AgentTool(stock_analyst),
+        get_current_time,
+        ] #sub agents cannot use tools so we need to pass the agent through the AgentTool class
 )
