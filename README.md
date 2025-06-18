@@ -52,8 +52,8 @@ from google.adk.models.lite_llm import LiteLlm
 2. Use the LiteLlm wrapper in your agent's code:
 ```python
 agent = Agent(
-    name: "Your Agent Name",
-    model: LiteLlm("ollama_chat/you_model_name")
+    name = "Your Agent Name",
+    model = LiteLlm("ollama_chat/you_model_name")
 )
 ```
 
