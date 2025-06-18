@@ -20,10 +20,7 @@ This repository includes the following examples of agents:
 
 * **1-Basic Agent:** A simple agent that demonstrates the basic functionality of the ADK.
 * **2-Tool Agent:** An agent that uses tools to perform actions.
-* **3-Multi-Agent:** A system of multiple agents that have different funtionalities.
-*   **4-Structured Output Agent:** An agent (`shortstory_writer`) that takes a user's request and writes a short story, outputting the result in a structured JSON format.
-*   **5-Sessions and Memory Agent:** An agent (`question_answering_agent`) that answers questions based on user preferences and can remember information across sessions.
-*   **6-Persistent Storage Agent:** An agent (`remainder_agent`) that manages user reminders (add, view, update, delete) and stores them persistently.
+* **3-Multi-Agent:** A system of multiple agents that have different funtionalities.s
 
 ## Dependencies
 
