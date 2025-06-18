@@ -1,2 +1,3 @@
 google-adk==1.2.1
 yfinance==0.2.56
+google-genai==1.19.0
