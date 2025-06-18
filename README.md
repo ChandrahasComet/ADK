@@ -16,9 +16,9 @@ After running the command, open your web browser and navigate to the localhost U
 
 This repository includes the following examples of agents:
 
-* **Basic Agent:** A simple agent that demonstrates the basic functionality of the ADK.
-* **Tool Agent:** An agent that uses tools to perform actions.
-* **Multi-Agent:** A system of multiple agents that have different funtionalities.
+* **1-Basic Agent:** A simple agent that demonstrates the basic functionality of the ADK.
+* **2-Tool Agent:** An agent that uses tools to perform actions.
+* **3-Multi-Agent:** A system of multiple agents that have different funtionalities.
 
 ## Dependencies
 
