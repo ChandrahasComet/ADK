@@ -6,9 +6,8 @@ from google.adk.runners import Runner
 from dotenv import load_dotenv
 from google.genai import types
 from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StdioServerParameters
+from google.adk.models.lite_llm import LiteLlm # Import this litellm wrapper to use the local ollama model in your agent
 
-
-load_dotenv()
 
 async def get_agent():
     toolset = MCPToolset(
@@ -27,8 +26,9 @@ async def get_agent():
     
     agent = Agent(
         name = "stock_agent",
-        model = "gemini-2.0-flash",
+        model = LiteLlm(model = "ollama_chat/qwen3"),
         instruction = """
+        /set nothink
         You are a stock analyst agent that fetches stock price for the requested company.
         Get the current stock price for a company using yfinance.
         The company_name should be the ticker symbol (e.g., 'AAPL' for Apple).
@@ -36,50 +36,10 @@ async def get_agent():
         Output format must be
         GOOG: $170.00 (2023-07-17 10:30:00)
         APPLE: $270.00 (2023-07-17 10:30:00)
-""",
+""", # Disable thinking(only for models that support it) for quicker responses
         tools = [toolset]
     )
     return agent, toolset
-
-# async def get_rag_agent():
-#     toolset = MCPToolset(
-#                 connection_params= StdioServerParameters(
-#                     command = "/Library/Frameworks/Python.framework/Versions/3.11/bin/uv",
-#                     args = [
-#                         "run",
-#                         "--with",
-#                         "mcp[cli]",
-#                         "mcp",
-#                         "run",
-#                         "/Users/contenterra_m4512/Chandrahas/Projects/mcp_adk/mcp_servers/rag-server/rag_server.py"
-#                     ],
-#                     timeout = 30.0
-#                 )
-#             )
-    
-#     agent = Agent(
-#         name = "rag_agent",
-#         model = "gemini-2.0-flash",
-#         instruction = """
-#         You are a specialized RAG agent. Your sole purpose is to retrieve relevant contextual information from the vector database based on the user's query.
-
-#         **Your Task:**
-#         1.  Receive the user's original query.
-#         2.  Use the `query_vector_store` tool with the user's query to fetch the most relevant context and get the answer.
-
-#         Show the object returned from the tool to the user.
-
-
-#         You can use the following tool:
-#         - `query_vector_store`: Takes the user's query as input and returns a dictionary containing query and response keys.
-
-#         ** Important Considerations: **
-#         - When sending the user query to query_vector_store tool, do not minimise it. As the query will be used to retrieve documents from the vector database.
-#         - minimising the user query might result in retrieval of irrelevant documents. So Strictly refrain from minimising the query.
-#     """,
-#         tools = [toolset]
-#     )
-#     return agent, toolset
 
 async def main():
     try:

@@ -1,4 +1,4 @@
-# Agent Examples
+# ADK - Agent Development Kit
 
 This repository contains examples of agents built using the Google ADK.
 
@@ -40,4 +40,29 @@ This repository includes the following examples of agents:
 * **5-Sessions and Memory Agent:** An agent (`question_answering_agent`) that answers questions based on user preferences and can remember information across sessions.
 * **6-Persistent Storage Agent:** An agent (`remainder_agent`) that manages user reminders (add, view, update, delete) and stores them persistently.
 
+## Using Local Ollama Model in you Agent
+
+To use a local Ollama model in your agent, follow these steps:
+
+1. Import the LiteLlm wrapper using:
+```python
+from google.adk.models.lite_llm import LiteLlm
+```
+
+2. Use the LiteLlm wrapper in your agent's code:
+```python
+agent = Agent(
+    name: "Your Agent Name",
+    model: LiteLlm("ollama_chat/you_model_name")
+)
+```
+
+You can get your model name by using "ollama list" in your terminal.
+
+** Important **: 
+ - If your agent is relying on tools, please make sure that you select a model with tool support from Ollama website. You can check if your model supports tools by using "ollama show <model_name>". "tools" should appear under capabilities.
+
+ - If the model supports "thinking", it is better to disable it for quicker responses. To do that use "/no_think" or "/set nothink" at the beginning of the agent's Instruction.
+
+Check **'ADK+MCP/ollama_adk.py'** for an example of using a local Ollama model in an agent.
 
