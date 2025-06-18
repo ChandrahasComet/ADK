@@ -2,3 +2,8 @@
 __pycache__/
 .env
 *.db
+chatbot/
+temp.ipynb
+.DS_Store
+mcp_adk/
+eworx/
