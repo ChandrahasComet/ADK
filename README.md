@@ -41,6 +41,9 @@ This repository includes the following examples of agents:
 * **5-Sessions and Memory Agent:** An agent (`question_answering_agent`) that answers questions based on user preferences and can remember information across sessions.
 * **6-Persistent Storage Agent:** An agent (`remainder_agent`) that manages user reminders (add, view, update, delete) and stores them persistently.
 
+For more examples and more information about ADK, watch this video: https://youtu.be/P4VFL9nIaIA?si=796MnC3TIh4F5MDx
+This is not my video, but it really helped me understand ADK, so i highly recommend watching it.
+
 ## Using Local Ollama Model in you Agent
 
 To use a local Ollama model in your agent, follow these steps:
