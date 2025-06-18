@@ -4,6 +4,6 @@ __pycache__/
 *.db
 chatbot/
 temp.ipynb
+temp.py
 .DS_Store
-mcp_adk/
 eworx/
