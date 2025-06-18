@@ -1,6 +1,7 @@
 # ADK - Agent Development Kit
 
 This repository contains examples of agents built using the Google ADK.
+I have also added ADK+MCP (Model Context Protocol) example.
 
 ## Dependencies
 
@@ -59,10 +60,10 @@ agent = Agent(
 
 You can get your model name by using "ollama list" in your terminal.
 
-** Important **: 
+**Important**: 
  - If your agent is relying on tools, please make sure that you select a model with tool support from Ollama website. You can check if your model supports tools by using "ollama show <model_name>". "tools" should appear under capabilities.
 
  - If the model supports "thinking", it is better to disable it for quicker responses. To do that use "/no_think" or "/set nothink" at the beginning of the agent's Instruction.
 
-Check **'ADK+MCP/ollama_adk.py'** for an example of using a local Ollama model in an agent.
+Check `ADK+MCP/ollama_adk.py` for an example of using a local Ollama model in an agent.
 
